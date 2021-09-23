@@ -1,0 +1,88 @@
+<html>
+      <head>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            
+            <style>
+                  .month > div{
+                        display : inline-block;
+                        width: 200px;
+                        height: 200px;
+                        vertical-alignL top;
+                        background-color : #eaeaea;
+                        border: 1px solid black;
+                  }
+                  .month > div > div:nth-child(1) {
+                        display : inline-block;
+                        width: 200px;
+                        height: 200px;
+                        vertical-alignL top;
+
+                        border: 1px solid black;
+                  }
+                  .month > div > div:nth-child(2) {
+                        display : inline-block;
+                        width: 200px;
+                        height: 200px;
+                        vertical-alignL top;
+                        background-color : #eaea; 
+                        border: 1px solid black;
+                  }
+                  .to_do {
+                        width:100%;
+                        background-color: #b8daff;
+                        margin-top: 5px;
+                        padding: 5px;
+                  }
+            </style>
+      </head>
+       <!-- 1. "날짜"와 "할일"을 입력하는 input 창을 만든다.
+2. 입력 버튼을 누를 시 해당 "날짜"에 "할일"을 추가한다.
+3. 입력 옆에 있는 삭제 버튼을 누를시 해당 날짜의 전체 일정을 삭제 한다.
+4. 달력에 있는 수정 버튼을 누를 시, 수정을 위한 input과 수정 버튼을 표시한다.
+5. 4의 수정 버튼을 누를 시 스케쥴을 수정하고, input 창을 안 보이게 한다.
+6. 스케쥴 옆에 있는 삭제 버튼을 누르면 해당 스케쥴만 삭제되게 한다.
+ -->
+      <body>
+            <div class="mb-3">
+                  <input id="date" type="text">
+                  <input id="toDo" type="text">
+                  <button onclick="schedule_insert();" >입력</button>
+                  <button onclick="schedule_remove();" >삭제</button>
+            </div>
+      
+            <div class="d-none mb-3" id="edit_box">
+                  <input id="toDo_edit" type="text">
+                  <button onclick="schedule_edit();" >변경</button>
+            </div>
+      
+      
+      
+            <div class="month">
+                  <div id = '1'>
+                        <div>1일</div>
+                        <div></div>
+                  </div>
+      
+                  <div id = '2'>
+                        <div>2일</div>
+                        <div></div>
+                  </div>
+      
+                  <div id = '3'>
+                        <div>3일</div>
+                        <div></div>
+                  </div>
+                  </div>
+            <script>
+                  var edit_note;
+                  function schedule_insert(){
+                        //자식 선택을 사용하여 접근
+                        var day = $('#date').val();
+                        var toDo = $('#toDo').val();
+                        $( $('#'+day) .children()[0] ).append("<div>" + toDo + "</div>" );
+                       // var day = $('date').val()-1;
+                       // $( $( $('.month') .children()[day] ).children()[1]). append("<div class='to_do'>"+ $('#toDo).val() + "</div>" );
+                  }  
+            </script>
+      </body>
+</html>

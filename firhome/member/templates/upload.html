@@ -1,0 +1,20 @@
+<!-- <form enctype="multipart/form-data" method="post">
+      {{ form }}
+      <button type="submit">업로드</button>
+</form> -->
+
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	
+	{{ form }}
+	
+	<button type="submit">업로드</button>
+</form>
+<!-- forms.py없을떄
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	
+	업로드 할 파일은??? : <input type="file" name="my_file">
+	
+	<button type="submit">업로드</button>
+</form> -->

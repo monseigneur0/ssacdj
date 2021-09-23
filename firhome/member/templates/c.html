@@ -1,0 +1,38 @@
+<form action="http://101.101.217.75:8000/happy/send" method="post">
+	{% csrf_token %}
+
+	이름: <input type="text" name="name">
+      이메일: <input type="text" name="mail">
+      비밀번호: <input type="text" name="pwd">
+      주소: <input type="text" name="address">
+      <script>
+            function select_gu(obj){
+                  if ( obj.value == "서울"){
+                        document.getElementbyId(" ssac_label" ).innerHTML = document.getElementById( "inputcountry").value;
+
+                  }
+                  else if ( obj.value == "경기" ) console.log("경기도눌렀징");
+                  else console.log("거긴 어디양?")
+            }
+      </script>
+      <select id="inputcity" class="from-select" name="tcity" onchange="select_gu(this);">
+            <option value="서울" selected>서울</option>
+            <option value="경기" selected>서울</option>
+            <option value="인천" selected>서울</option>
+            <option value="대전" selected>서울</option>
+            <option value="세종" selected>서울</option>
+            <option value="강원" selected>서울</option>
+
+      </select>       
+      <select id="inputcount" class="from-select" name="tcount" onchange="select_gu(this);">
+            <option value="서울" selected>서울</option>
+            <option value="경기" selected>서울</option>
+            <option value="인천" selected>서울</option>
+            <option value="대전" selected>서울</option>
+            <option value="세종" selected>서울</option>
+            <option value="강원" selected>서울</option>
+
+      </select>    
+
+	<button>전송</button>
+</form>

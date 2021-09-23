@@ -1,0 +1,84 @@
+<html lang="ko">
+      <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+            <meta charset="UTF-8">
+            <title>Window of Memory</title>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                  <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Window of Memory</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled">Disabled</a>
+                        </li>
+                      </ul>
+                      <form class="flex">
+                        <input class="form-control me-2" type="text" id="id" placeholder="아이디" name="user_id" aria-label="Search">
+                        <input class="form-control me-2" type="password" id="pw" placeholder="비밀번호" name="pwd">
+                          <button class="btn btn-outline-success" type="button" id="logins" onclick="ajax();">로그인</button>
+                          <a class="btn btn-outline-success" type="button" id="joins" href="http://101.101.217.75:8000/happy/join">회원가입</a>
+                          <div id="my_div"></div>
+                        </form>
+                    </div>
+                  </div>
+                </nav>
+      </head>
+
+<body>
+      <script> 
+      // 함수 로그인시 입력창 삭제 및 로그인 된 모습 추가, id 와 pw값 받아서 저장하고 토큰복사
+            function ajax(){
+                  $.post(
+                        "ajax",
+                        { id_:$("#id").val() , pw_: $("#pw").val() , csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value },
+                        function ( hell ){
+                          $("#id").remove()
+                          $("#pw").remove()
+                          $("#logins").remove()
+                          $("#joins").remove()
+                          $("#my_div").html(hell);
+                          // alert(hell)
+                        }
+                  );
+            }
+      </script>
+<!-- <script>
+  function alertsfail(){
+    if  ( {{ er }} ) {
+      alert( {{ er }} )
+    }
+  }
+</script> -->
+<script>
+      alert("로그인 실패")
+</script>
+
+      <div>
+            {% csrf_token %}
+            
+      <!--  <input type="text" id="id" placeholder="아이디" name="user_id">
+            <input type="password" id="pw" placeholder="비밀번호" name="pwd">
+            <button type="button" onclick="ajax();">로그인</button> -->
+      </div>
+</body>
