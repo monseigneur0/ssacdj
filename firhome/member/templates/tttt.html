@@ -1,15 +1,13 @@
 <html lang="ko">
     {% load static %}
-
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <title>Vino Un Poco</title>
-        <div class="container">
-            <div class="row">
-                <div class="col-10">
+        <!-- <div class="container"> -->
+            <!-- <div class="row"> -->
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="http://101.101.217.75:8000/happy/login2">Vino Un Poco</a>
@@ -19,7 +17,7 @@
                                 <a class="nav-link active" aria-current="page" href="http://101.101.217.75:8000/happy/login2">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">ping</a>
+                                <a class="nav-link btn-outline-danger" href="http://101.101.217.75:8000/happy/ping">ping</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,6 +41,8 @@
                                 <a class="btn btn-outline-danger" type="button" id="joins" href="http://101.101.217.75:8000/happy/join">회원가입</a>
                                 <div id="my_div"></div>
                             </form> -->
+
+                            
                         </div>
                     </div>
                 </nav>
@@ -67,84 +67,94 @@
                     </div>
                     <a class="btn btn-outline-danger" type="button" id="joins" href="http://101.101.217.75:8000/happy/join">회원가입</a>
                 </div>
+
     </head>
 
 
     <body>
-
-
 <!-- main body contents -->
-    <div class="row m-3 row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="{% static 'Romanee_Conti.png' %}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Romanée-Conti 2020</h5>
-                            <p class="card-text">로마네꽁띠를 마신다는 것은 역사의 한 장면에 입을 맞추는 것이다.
-                                <a class="btn btn-outline-danger" type="button" id="joins" href="http://101.101.217.75:8000/happy/join">투자하기</a>
+    <div class="container">
+        <div class="row m-3 row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{% static 'Romanee_Conti.png' %}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Romanée-Conti 2020</h5>
+                                <p class="card-text">로마네꽁띠를 마신다는 것은 역사의 한 장면에 입을 맞추는 것이다.
+                                    <a class="btn btn-outline-danger" type="button" id="joins" href="http://101.101.217.75:8000/happy/join">투자하기</a>
 
-                            </p>
+                                </p>
 
-                            <p class="card-text"><small class="text-muted">20,000,000원</small></p>
+                                <p class="card-text"><small class="text-muted">20,000,000원</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+        
+
+
+
+
+
+
+
+
+
+
     <script> 
       // 함수 로그인시 입력창 삭제 및 로그인 된 모습 추가, id 와 pw값 받아서 저장하고 토큰복사
             function ajax(){
