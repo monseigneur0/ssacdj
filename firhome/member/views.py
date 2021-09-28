@@ -99,8 +99,8 @@ def changed(req) :
             print("로그인실패")
             return render(req, 'failure.html')
 def delete(req) :
-    #   records = User.objects.all()
-    #   records.delete()
+      #   records = User.objects.all()
+      #   records.delete()
       return render(req, 'delete.html')
 def deleted(req) :
       logged_member = User.objects.filter( userid = req.POST.get('user_id'), password = req.POST.get('pwd'))
