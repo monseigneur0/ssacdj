@@ -160,5 +160,8 @@ def multiview(req) :
 
       # {'info1':req.POST.getlist('objects'), 'info2':req.POST.get('objects')}
 def ping(req) :
-
       return render(req, 'ping.html')
+def gprat(req) :
+      return render(req, 'gprat.html')
+def homeboot(req) :
+      return render(req, 'homeboot.html')

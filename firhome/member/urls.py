@@ -24,5 +24,6 @@ urlpatterns = [
       path("multibox", views.multibox),
       path("multiview", views.multiview),
       path("ping", views.ping),
-
+      path("homeboot", views.homeboot),
+      path("gprat", views.gprat),
       ]
