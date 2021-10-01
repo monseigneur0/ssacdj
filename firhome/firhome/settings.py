@@ -124,7 +124,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 import os
-STATIC_ROOT = os.path.join('staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 CKEDITOR_UPLOAD_PATH = "/home/media/media.lawrence.com/uploads"
 
@@ -138,7 +139,6 @@ CKEDITOR_UPLOAD_PATH = "/home/media/media.lawrence.com/uploads"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # for imamgefile
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 # STATICFILES_DIRS=[
 #     STATIC_DIR,

@@ -164,4 +164,4 @@ def ping(req) :
 def gprat(req) :
       return render(req, 'gprat.html')
 def homeboot(req) :
-      return render(req, 'homeboot.html')
+      return render(req, 'homeboot/homeboot.html')
