@@ -114,11 +114,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                                <img class="img-fluid" src="{% static 'wine1.png' %}" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Threads</div>
-                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                                <div class="portfolio-caption-heading">로마네 꽁띠</div>
+                                <div class="portfolio-caption-subheading text-muted">부르고뉴</div>
                             </div>
                         </div>
                     </div>
@@ -129,11 +129,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
+                                <img class="img-fluid" src="{% static 'wine2.jpg' %}" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Explore</div>
-                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                                <div class="portfolio-caption-heading">돈나푸가타 안씰리아</div>
+                                <div class="portfolio-caption-subheading text-muted">세레나데</div>
                             </div>
                         </div>
                     </div>
@@ -144,11 +144,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
+                                <img class="img-fluid" src="{% static 'wine3.jpg' %}" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Finish</div>
-                                <div class="portfolio-caption-subheading text-muted">Identity</div>
+                                <div class="portfolio-caption-heading">언쉐클드 레드블렌드</div>
+                                <div class="portfolio-caption-subheading text-muted"> 캘리포니아</div>
                             </div>
                         </div>
                     </div>
@@ -159,11 +159,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
+                                <img class="img-fluid" src="{% static 'wine4.jpg' %}" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Lines</div>
-                                <div class="portfolio-caption-subheading text-muted">Branding</div>
+                                <div class="portfolio-caption-heading">디아블로 인텐스 레드블렌드</div>
+                                <div class="portfolio-caption-subheading text-muted">칠레</div>
                             </div>
                         </div>
                     </div>
@@ -174,11 +174,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
+                                <img class="img-fluid" src="{% static 'wine5.JPG' %}" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Southwest</div>
-                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
+                                <div class="portfolio-caption-heading">알마비바</div>
+                                <div class="portfolio-caption-subheading text-muted">칠레</div>
                             </div>
                         </div>
                     </div>
@@ -189,11 +189,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
+                                <img class="img-fluid" src="{% static 'wine6.JPG' %}" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Window</div>
-                                <div class="portfolio-caption-subheading text-muted">Photography</div>
+                                <div class="portfolio-caption-heading">샤토 무사르</div>
+                                <div class="portfolio-caption-subheading text-muted">레바논</div>
                             </div>
                         </div>
                     </div>
@@ -417,18 +417,22 @@
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">로마네 꽁띠</h2>
+                                    <p class="item-intro text-muted">부르고뉴</p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'wine1.png' %}" alt="..." />
+                                    <p>색이 무척이나 진하다.
+                                        색만 보면 아무도 피노누아라고 말할 사람은 없을 것 같다.
+                                        향에서는 이런게 복합적인 향이구나 라는 것을 확실하게 보여주는 것 같은 향의 깊이감과 파워..
+                                        맛도 향과 비슷하게 무지하게 복합적인 맛이 강하고 깊이있게 느껴졌다.
+                                        </p>
                                     <ul class="list-inline">
                                         <li>
-                                            <strong>Client:</strong>
-                                            Threads
+                                            <strong>품종:</strong>
+                                            피노누아
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Illustration
+                                            <strong>빈티지:</strong>
+                                            2002
                                         </li>
                                     </ul>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -446,24 +450,28 @@
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{% static 'assets/img/close-icon.svg' %}" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">돈나푸가타 안씰리아 / 세라자데</h2>
+                                    <p class="item-intro text-muted">이탈리아 시칠리아</p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'wine2.jpg' %}" alt="..." />
+                                    <p>돈나푸가타 안씰리아 / 세라자데 750ml	
+                                        160년 전통, 4대에 이은 가족 경영으로 유명한 시칠리아 최고의 와이너리 ‘돈나푸가타’
+                                        아름다운 여인의 모습을 담고 있는 아트레이블로 유명하며, 두터운 팬층을 자랑하는 돈나푸가타 시리즈
+                                        안씰리아 : 대한민국 주류 대상 구대륙 화이트 부문 수상/ 시트러스 과일향과 봄꽃향기, 산미의 조화로 해산물, 전, 튀김 등과 잘 어울리는 산뜻한 화이트와인
+                                        세라자데 : JS 91점, WE 90점/ 과일향과 바이올렛향, 매콤한 후추향이 돋보이며 파스타, 피자는 물론 매콤한 아시아음식과도 잘 어울리는 레드와인</p>
                                     <ul class="list-inline">
                                         <li>
-                                            <strong>Client:</strong>
-                                            Explore
+                                            <strong>품종:</strong>
+                                            안씰리아–카타라토50%, 안소니카50% /세라자데–네로다볼라50%, 시라50%
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Graphic Design
+                                            <strong>빈티지:</strong>
+                                            2019
                                         </li>
                                     </ul>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -481,24 +489,27 @@
         <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{% static 'assets/img/close-icon.svg' %}" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">언쉐클드 레드블렌드 </h2>
+                                    <p class="item-intro text-muted">캘리포니아</p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'wine3.jpg' %}" alt="..." />
+                                    <p>언쉐클드 레드블렌드 750ml
+                                        셀링포인트	
+                                        캘리포니아 대표 컬트 와인 인더 프리즈너 와인에서 2020년 최초로 출시하여 선풍적인 인기를 끌고있는 프리즈너의 세컨드 와인 이마트24 단독 출시
+                                        비*노 평점4.0(전세계 top3% 와인), 와*닷컴 평점90점 등 점수를 자랑하는 프리미엄 와인 라즈베리, 블루베리, 제비꽃의 아로마와 말린 체리, 아카시아, 후추의 풍미가 오감을 자극하는 파워풀 하면서도 감미로운 와인 부담없는 가격으로 즐길 수 있는 캘리포니아 컬트 와인 컨셉의 와인</p>
                                     <ul class="list-inline">
                                         <li>
-                                            <strong>Client:</strong>
-                                            Finish
+                                            <strong>품종:</strong>
+                                            진판델, 말벡, 쁘띠쉬라 등
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Identity
+                                            <strong>빈티지:</strong>
+                                            2019
                                         </li>
                                     </ul>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -516,24 +527,28 @@
         <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{% static 'assets/img/close-icon.svg' %}" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">디아블로 인텐스 레드블렌드</h2>
+                                    <p class="item-intro text-muted">칠레</p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'wine4.jpg' %}" alt="..." />
+                                    <p>디아블로 인텐스 레드블렌드 750ml
+                                        세계최대 와인 회사 콘차이토로와 협업하여 편의점와인 고객을 위해 단독 소싱, 단독 출시 하여 이마트24의 베스트 셀링 와인 중 하나로 자리잡은 차별화 와인
+                                        세계적으로 가장 많이 팔리는 브랜드 중 하나인 ‘디아블로’의 신규라인업으로 블렌드를 통한 한층 더 부드럽고 진한 과실향과 오크 숙성으로 인한 다양한 풍미와 깊은 여운을 느낄 수 있는 와인
+                                        스테이크, 삼겹살 등 육류는 기본, 양념이 더해진 다양한 음식과도 환상 조합
+                                        와인타입	달지 않은 레드와인</p>
                                     <ul class="list-inline">
                                         <li>
-                                            <strong>Client:</strong>
-                                            Lines
+                                            <strong>품종:</strong>
+                                            쉬라60%, 까베네쇼비뇽30%, 말벡10%
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Branding
+                                            <strong>빈티지:</strong>
+                                            2019
                                         </li>
                                     </ul>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
@@ -551,25 +566,31 @@
         <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{% static 'assets/img/close-icon.svg' %}" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">알마비바</h2>
+                                    <p class="item-intro text-muted">칠레</p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'wine5.JPG' %}" alt="..." />
+                                    <p>'세기의 와인'
+                                        알마비바 Almaviva 2017
+                                                                   
+                                        칠레의 프리미엄와인 중에서도 알마비바(Almaviva)는 20년 넘게 흔들림없는 위상을 지키고 있는 이름이다.
+                                        세계적인 와인의 평론가 제임스 서클링(James Suckling)이 자신의 ‘세기의 와인(Wine of Decade)’으로 칠레 와이너리 알마비바(Almaviva)의 2017년 빈티지를 선정했다. 
+                                        제임스 서클링은 "알마비바의 2017년 빈티지는 자신이 지난 10년간 테이스팅했던 10만병의 와인 중에서도 두드러진다"고 말하며 2017년과 2015년 빈티지는 100점을 획득했다고 덧붙였다.
+                                        2017년 빈티지는 카베르네 소비뇽 65%, 카르메네르 23%, 카베르네 프랑 5%를 사용했고, 특히 쁘띠 베르도의 품질이 매우 좋아서 보통은 2%정도만 사용하던 것을 이번에는 5%나 사용했다는 점이 특징적이고 메를로는 2% 사용했습니다.
+                                        #알마비바 #콘차이토로 #세기의명품 </p>
                                     <ul class="list-inline">
                                         <li>
-                                            <strong>Client:</strong>
-                                            Southwest
+                                            <strong>품종:</strong>
+                                            카베르네 소비뇽 65%, 카르메네르 23%, 카베르네 프랑 5%
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Website Design
-                                        </li>
+                                            <strong>빈티지:</strong>
+                                            2017                                        </li>
                                     </ul>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-times me-1"></i>
@@ -586,24 +607,30 @@
         <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{% static 'assets/img/close-icon.svg' %}" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">샤토 무사르</h2>
+                                    <p class="item-intro text-muted">레바논</p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'wine6.JPG' %}" alt="..." />
+                                    <p>샤토 무사르 Chateau Musar
+
+                                        죽기전에 마셔봐야 할 전설의 100대 와인’ 선정, 16년에 걸쳐 이어진 레바논 내전기간(1975~1991)에도 생산된 ‘전쟁 속의 와인’, 무사르’는 아랍어로 ‘경관이 빼어난 곳’을 의미한다. 
+                                        샤토 무사르가 위치한 해발 1.500m의 베카고원은 너무 아름다워 고대 로마인들이 술의 신 바쿠스를 모시는 신전을 세우고 내부에 암포라, 포도 장식을 한 곳이다.
+                                        샤또 무사르와인은 50년이상 수령의 포도나무에서 수확한 품종으로 양조해 최소 7년간의 숙성을 거친다. 또한 적절한 온도와 습도에서 보관하면 20년까지 더 숙성시킬 수 있다.
+                                        깊이 있는 진한 루비색, 잘 익은 블랙베리·레드 커런트·석류·체리·다크 플럼 등의 과일향, 후추·허브·민트·삼나무·가죽·정향이 일품이다. 풍부한 타닌, 절도 있는 산도, 균형잡힌 보디감과 탁월한 구조감은 놀라움을 자아낸다. 
+                                        #샤토무사르 #평화의와인 #100대와인 #중동와인 #레바논와인</p>
                                     <ul class="list-inline">
                                         <li>
-                                            <strong>Client:</strong>
+                                            <strong>품종:</strong>
                                             Window
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Photography
+                                            <strong>빈티지:</strong>
+                                            2015
                                         </li>
                                     </ul>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
