@@ -46,7 +46,7 @@
                 </nav>
                 <!-- toggle end(right) off canvas plus login -->
                 <div class="d-flex flex-row-reverse bd-highlight">
-                    <button class="btn btn-danger " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Login</button>
+                    <button class="btn btn-danger " type="button" id="loginss" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Login</button>
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
                         <div class="offcanvas-header">
                             <h5 id="offcanvasTopLabel">Login</h5>
@@ -63,29 +63,73 @@
                             </form>
                         </div>
                     </div>
-                    <a class="btn btn-outline-danger" type="button" id="joins" href="http://101.101.217.75:8000/happy/join">회원가입</a>
+                    <a class="btn btn-outline-danger" type="button" id="joinss" href="http://101.101.217.75:8000/happy/join">회원가입</a>
+                    <div id="my_divs"></div>
+
                 </div>
     </head>
 
 
     <body>
-
-
 <!-- main body contents -->
         <div class="container">
             <div class="row">
-                <div class="col-2 bg-info">1</div>
-                <div class="col-2 bg-info">1</div>
-                <div class="col-2 bg-info">1</div>
-                <div class="col-2 bg-info">1</div>
-                <div class="col-2 bg-info">1</div>
-                <div class="col-2 bg-info">1</div>
+                <div class="col-2 bg-danger">1</div>
+                <form class="col-2 bg-danger" action="#" name="no1" method="post">
+                    {% csrf_token %}
+                    <button>1번</button>
+                </form>
+                <form class="col-2 bg-danger" action="#" name="no2" method="post">
+                    {% csrf_token %}
+                    <button>2번</button>
+                </form>
+                <form class="col-2 bg-danger" action="#" name="no3" method="post">
+                    {% csrf_token %}
+                    <button>3번</button>
+                </form>
+                <div class="col-2 bg-danger">1</div>
+                <form class="col-2 bg-danger" action="#" name="nocheck" method="post">
+                    {% csrf_token %}
+                    <button>확인</button>
+                </form>            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-2 bg-danger"> 1   {{ total_member.username }}님</div>
+                <div class="col-2 bg-danger">1</div>
+                <div class="col-2 bg-danger">1</div>
+                <div class="col-2 bg-danger">1</div>
+                <div class="col-2 bg-danger">1</div>
+                <div class="col-2 bg-danger">1</div>
             </div>
         </div>
 
+{% load static %}
+{% block content %}
+
+<div>게시판 상세보기!</div>
+<div style="border: 1px black solid; margin: 20px 0px;"></div>
+
+<a href=""><button>수정</button></a>
+<a href=""><button>삭제</button></a>
+
+<div>
+    게시판 종류 : {{ board.username }}
+</div>
+<div>
+    작성자 : {{ board.ping_num }} 
+<div>
+
+</div>
+<div>
+
+</div>
+
+{% endblock %}
+
 
     <div class="container">
-        <div class="row-2">
+        <div class="row">
             <div class="col-3"> 1/4 </div>
             <div class="col-3"> 2/4 </div>
             <div class="col-3"> 3/4 </div>
@@ -103,10 +147,10 @@
 
 <!-- flex --> 
 <div class="d-flex p-3 bg-secondary text-white justify-content-end">
-<div class="p-2 bg-info">flex item 1</div> 
-<div class="p-2 bg-warning">flex item 2</div> 
-<div class="p-2 bg-primary">flex item 3</div> 
-<!-- content-end/center/start(안적었을때 기본) --> 
+    <div class="p-2 bg-info">flex item 1</div> 
+    <div class="p-2 bg-warning">flex item 2</div> 
+    <div class="p-2 bg-primary">flex item 3</div> 
+    <!-- content-end/center/start(안적었을때 기본) --> 
 </div> 
 <div class="flex-height d-flex p-3 bg-secondary text-white"> 
 <div class="p-2 bg-info align-self-start">flex item</div> 
@@ -182,8 +226,14 @@
                         $("#id").remove()
                         $("#pw").remove()
                         $("#logins").remove()
+                        $("#loginss").remove()
+
                         $("#joins").remove()
+                        $("#joinss").remove()
+
                         $("#my_div").html(hell);
+                        $("#my_divs").html(hell);
+
                         // alert(hell)
                     }
                 );

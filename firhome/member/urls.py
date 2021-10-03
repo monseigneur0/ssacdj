@@ -26,4 +26,7 @@ urlpatterns = [
       path("ping", views.ping),
       path("homeboot", views.homeboot),
       path("gprat", views.gprat),
+      path("buy", views.buy),
+      path("shop", views.shop),
+      path("wineup", views.wineup),
       ]

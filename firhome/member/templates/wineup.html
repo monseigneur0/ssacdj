@@ -1,0 +1,165 @@
+<html lang="ko">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title>Wine Upload</title>
+
+        <style>
+            body {
+                min-height: 100vh;
+            
+                background: -webkit-gradient(linear, left bottom, right top, from(#db92be), to(#6c1d4d));
+                background: -webkit-linear-gradient(bottom left, #db92be 0%, #6c1d4d 100%);
+                background: -moz-linear-gradient(bottom left, #db92be 0%, #6c1d4d 100%);
+                background: -o-linear-gradient(bottom left, #db92be 0%, #6c1d4d 100%);
+                background: linear-gradient(to top right, #db92be 0%, #6c1d4d 100%);
+            }
+            .input-form {
+                max-width: 680px;
+
+                margin-top: 80px;
+                padding: 32px;
+
+                background: #fff;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+                -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+                box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+            }
+        </style>
+        <!-- nav -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="http://101.101.217.75:8000/happy/login2">Vino Un Poco</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://101.101.217.75:8000/happy/login2">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                    </ul>
+                    <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </head>
+
+    <body>
+        <div class="container">  
+            <div class="row">
+                <div class="input-form col-md-12 mx-auto">
+                    <h4 class="mb-3">와인 업로드</h4>
+                    <form class="validation-form"  enctype="multipart/form-data" method="post" novalidate >
+                        <!-- action="http://101.101.217.75:8000/happy/rec" -->
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="wname">와인 이름</label>
+                                <input type="text" class="form-control" name="wname" id="wname" placeholder="와인 이름" value="" required>
+                                <div class="invalid-feedback">
+                                    이름을 입력해주세요.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="nickname">가격(원)</label>
+                                <input type="text" class="form-control" name="wprice" id="wprice" placeholder="가격 (원)" value="" required>
+                                <div class="invalid-feedback">
+                                    숫자만 사용가능합니다.
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="wdiscribe">와인 정보</label>
+                                <input type="text" class="form-control" name="wdiscribe" id="wdiscribe" placeholder="와인 설명" value="" required>
+                                <div class="invalid-feedback">
+                                    정보를 입력하세요.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form }}
+                            </div>
+                            <button class="col-md-12 mx-3 btn btn-primary btn-md btn-block" type="submit">업로드</button>
+                        </form>
+                        </div>
+                    </div>
+            </div>
+                <footer class="my-3 text-center text-small">
+                    <p class="mb-1">&copy; 2021 YD</p>
+                </footer>
+            </div>
+
+            <!-- 유효성 검사 1 입력했는지 확인 -->
+            <script>
+                window.addEventListener('load', () => {
+                    const forms = document.getElementsByClassName('validation-form');
+            
+                    Array.prototype.filter.call(forms, (form) => {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                    }, false);
+                });
+                }, false);
+                // var idJ = /^[a-z0-9]{5,20}$/;
+                // $("#mem_id").focusout(function(){
+  			    //     if(!idJ.test($(this).val())){}
+            </script>
+      </body>
+</html>
+
+
+
+
+<!-- <form enctype="multipart/form-data" method="post">
+      {{ form }}
+      <button type="submit">업로드</button>
+</form> -->
+
+<!-- <form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	
+	{{ form }}
+	
+	<button type="submit">업로드</button>
+</form> -->
+<!-- forms.py없을떄
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	
+	업로드 할 파일은??? : <input type="file" name="my_file">
+	
+	<button type="submit">업로드</button>
+</form> -->

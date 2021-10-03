@@ -1,14 +1,16 @@
 from django.shortcuts import render
-from .models import User #data
+from .models import User, Wine, manwine #data
 from django.views.decorators.csrf import csrf_exempt #token err
 
 from django.http import HttpResponseRedirect, request
-from .forms import UploadFileForm 
+from .forms import UploadFileForm, FileFieldForm
 # to uplaod files
 import random
 import os
 # Imaginary function to handle an uploaded file.
-
+import uuid
+from datetime import datetime
+from django.shortcuts import get_object_or_404
 
 def upload_file(request):
       if request.method == 'POST':
@@ -24,7 +26,6 @@ def handle_uploaded_file(f):
       with open(os.path.abspath('./member/static/' + f.name), 'wb+') as destination:
             for chunk in f.chunks():
                   destination.write(chunk)
-
 
 def hello(req) :
       return render(req, "a.html" ) 
@@ -160,8 +161,55 @@ def multiview(req) :
 
       # {'info1':req.POST.getlist('objects'), 'info2':req.POST.get('objects')}
 def ping(req) :
-      return render(req, 'ping.html')
+    if req.session.get('userid') :
+        print(req.session.get('userid'))
+        print("세션 로드 재 성공")
+        login_session = req.session.get('userid', '')
+        context = {'session' : login_session }
+        print(context)
+        # Django 템플릿에 사용할 파라미터 값을 변수로 선언 > 사용해야할 인자값이 많아질 때 편리하다.
+        board = User.objects.get(userid=req.session.get('userid',''))
+        # Board는 필자가 Model에서 설정한 DB 이름
+        print(board)
+
+        context['User'] = board
+        return render(req, 'ping.html', context)
+        # peoples= User.objects.filter()
+        # return render(req, 'ping.html', {'total_member' : peoples[0]})
+    else:      
+        print("로그인실패")
+        return render(req, 'failure.html',)
 def gprat(req) :
-      return render(req, 'gprat.html')
+    return render(req, 'gprat.html')
+def buy(req) :
+    alotofwine = Wine.objects.filter()
+    return render(req, 'buy.html',{'total_member' : alotofwine[0]})
 def homeboot(req) :
       return render(req, 'homeboot/homeboot.html')
+def shop(req) :
+      return render(req, 'shop.html')
+# def wineup(req) :
+#       return render(req, 'wineup.html')
+
+def wineup(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            todays_date = datetime.now()
+            print(todays_date)
+            w = str(todays_date.year) + str(todays_date.month).rjust(2,"0") + str(todays_date.day).rjust(2,"0") + str(todays_date.hour).rjust(2,"0") + str(todays_date.minute).rjust(2,"0") + str(todays_date.second).rjust(2,"0") + str(todays_date.microsecond).rjust(2,"0")
+            print(w)
+            extension = "." + request.FILES['file'].name.split('.')[-1]
+            print(extension)
+            new_wine = Wine( wine_name = request.POST.get('wname'), wine_price = request.POST.get('wprice'), wine_discribe = request.POST.get('wdiscribe'),wine_photo = 'wineno' + str(w) + str(extension))
+            new_wine.save() 
+            with open(os.path.abspath('./member/static/wineno' + str(w) + str(extension)), 'wb+') as destination:
+                for chunk in request.FILES['file'].chunks():
+                    destination.write(chunk)
+            return render(request, "uplaod.html", {'fil': request.FILES['file'].name })
+            # return HttpResponseRedirect('/success/url/')
+    else:
+        form = UploadFileForm()
+    return render(request, 'wineup.html', {'form': form})
+
+
