@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import User, Wine, manwine #data
 from django.views.decorators.csrf import csrf_exempt #token err
 
-from django.http import HttpResponseRedirect, request
+from django.http import HttpResponseRedirect, request, HttpResponse
 from .forms import UploadFileForm, FileFieldForm
 # to uplaod files
 import random
@@ -11,6 +11,61 @@ import os
 import uuid
 from datetime import datetime
 from django.shortcuts import get_object_or_404
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponse #HttpResponse : 응답에 대한 메타정보를 포함한 객체입니다. 로그인 완료시에 "로그인 완료" 라는 text를 띄우기 위해 임포트했습니다.
+from django.contrib.auth.hashers import make_password, check_password #비밀번호 암호화 / 패스워드 체크(db에있는거와 일치성확인)
+from django.contrib import auth
+
+# def join2(request):   #회원가입 페이지를 보여주기 위한 함수
+#     if request.method == "GET":
+#         return render(request, 'join.html')
+
+#     elif request.method == "POST":
+#         username = request.POST.get['username',None]   #딕셔너리형태
+#         password = request.POST.get['password',None]
+#         re_password = request.POST.get['re_password',None]
+#         res_data = {} 
+#         if not (username and password and re_password) :
+#             res_data['error'] = "모든 값을 입력해야 합니다."
+#         if password != re_password :
+#             # return HttpResponse('비밀번호가 다릅니다.')
+#             res_data['error'] = '비밀번호가 다릅니다.'
+#         else :
+#             user = User(username=username, password=make_password(password))
+#             user.save()
+#         return render(request, 'join.html', res_data) #register를 요청받으면 register.html 로 응답.
+
+
+def logged(request):
+    response_data = {}
+
+    if request.method == "GET" :
+        return render(request, 'login.html')
+
+    elif request.method == "POST":
+        login_username = request.POST.get('user_id', None)
+        login_password = request.POST.get('pwd', None)
+
+
+        if not (login_username and login_password):
+            response_data['error']="아이디와 비밀번호를 모두 입력해주세요."
+        else : 
+            myuser = User.objects.get(userid=login_username) 
+            #db에서 꺼내는 명령. Post로 받아온 username으로 , db의 username을 꺼내온다.
+            if check_password(login_password, myuser.password):
+                request.session['userid'] = myuser.id 
+                #세션도 딕셔너리 변수 사용과 똑같이 사용하면 된다.
+                #세션 user라는 key에 방금 로그인한 id를 저장한것.
+                return render(request, 'logged.html')
+            else:
+                response_data['error'] = "비밀번호를 틀렸습니다."
+
+        return render(request, 'login.html',response_data)
+
+
+
+
 
 def upload_file(request):
       if request.method == 'POST':
@@ -48,31 +103,31 @@ def join(req) :
 def search(req) :
       all_member = User.object.filter(username="김탁호", password="1234")
       return render(req, 'join.html', {'total_member : all_member'} )
-def logged(req) :
-      logged_member = User.objects.filter( userid = req.POST.get('user_id'))
-      if logged_member :
-            req.session['userid'] = req.POST.get('user_id')
-            #req.session.get['userid'] 
-            #세션 저장
-            #req.session['password'] = req.POST.get('pwd')
-            #세션 로드
-            #req.session.get['password'] = req.POST.get('pwd')
-            #세션삭제
-            #req.session.pop['password'] = req.POST.get('pwd')
-            #alert(req.session['userid'])
-            print("로그인 성공")
-            return render(req, 'success.html',{'total_member' : logged_member[0]} )
-      elif req.session.get('userid') :
-            print(req.session.get('userid'))
-            logged_member = User.objects.filter( userid = req.session.get('userid'))
-            # logged_member = User.objects.filter( userid = req.session.get('userid'))
-            #return render(req,'logged.html',{'total_member' : req.session.get('userid')})
-            #return render(req,'check.html')
-            print("세션 로드 성공")
-            return render(req,'success.html', {'total_member' : logged_member[0]})
-      else: 
-            print("로그인실패")
-            return render(req, 'login.html')
+# def logged(req) :
+#       logged_member = User.objects.filter( userid = req.POST.get('user_id'))
+#       if logged_member :
+#             req.session['userid'] = req.POST.get('user_id')
+#             #req.session.get['userid'] 
+#             #세션 저장
+#             #req.session['password'] = req.POST.get('pwd')
+#             #세션 로드
+#             #req.session.get['password'] = req.POST.get('pwd')
+#             #세션삭제
+#             #req.session.pop['password'] = req.POST.get('pwd')
+#             #alert(req.session['userid'])
+#             print("로그인 성공")
+#             return render(req, 'success.html',{'total_member' : logged_member[0]} )
+#       elif req.session.get('userid') :
+#             print(req.session.get('userid'))
+#             logged_member = User.objects.filter( userid = req.session.get('userid'))
+#             # logged_member = User.objects.filter( userid = req.session.get('userid'))
+#             #return render(req,'logged.html',{'total_member' : req.session.get('userid')})
+#             #return render(req,'check.html')
+#             print("세션 로드 성공")
+#             return render(req,'success.html', {'total_member' : logged_member[0]})
+#       else: 
+#             print("로그인실패")
+#             return render(req, 'login.html')
 def check(req) :
       if req.session.get('userid') :
             print(req.session.get('userid'))
