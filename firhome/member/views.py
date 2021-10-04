@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import User, Wine, manwine #data
 from django.views.decorators.csrf import csrf_exempt #token err
 
-from django.http import HttpResponseRedirect, request, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, request
 from .forms import UploadFileForm, FileFieldForm
 # to uplaod files
 import random
@@ -37,33 +37,31 @@ from django.contrib import auth
 #         return render(request, 'join.html', res_data) #register를 요청받으면 register.html 로 응답.
 
 
-def logged(request):
-    response_data = {}
+# def logged(request):
+#     response_data = {}
 
-    if request.method == "GET" :
-        return render(request, 'login.html')
+#     if request.method == "GET" :
+#         return render(request, 'login.html')
 
-    elif request.method == "POST":
-        login_username = request.POST.get('user_id', None)
-        login_password = request.POST.get('pwd', None)
-
-
-        if not (login_username and login_password):
-            response_data['error']="아이디와 비밀번호를 모두 입력해주세요."
-        else : 
-            myuser = User.objects.get(userid=login_username) 
-            #db에서 꺼내는 명령. Post로 받아온 username으로 , db의 username을 꺼내온다.
-            if check_password(login_password, myuser.password):
-                request.session['userid'] = myuser.id 
-                #세션도 딕셔너리 변수 사용과 똑같이 사용하면 된다.
-                #세션 user라는 key에 방금 로그인한 id를 저장한것.
-                return render(request, 'logged.html')
-            else:
-                response_data['error'] = "비밀번호를 틀렸습니다."
-
-        return render(request, 'login.html',response_data)
+#     elif request.method == "POST":
+#         login_username = request.POST.get('user_id', None)
+#         login_password = request.POST.get('pwd', None)
 
 
+#         if not (login_username and login_password):
+#             response_data['error']="아이디와 비밀번호를 모두 입력해주세요."
+#         else : 
+#             myuser = User.objects.get(userid=login_username) 
+#             #db에서 꺼내는 명령. Post로 받아온 username으로 , db의 username을 꺼내온다.
+#             if check_password(login_password, myuser.password):
+#                 request.session['userid'] = myuser.id 
+#                 #세션도 딕셔너리 변수 사용과 똑같이 사용하면 된다.
+#                 #세션 user라는 key에 방금 로그인한 id를 저장한것.
+#                 return render(request, 'logged.html')
+#             else:
+#                 response_data['error'] = "비밀번호를 틀렸습니다."
+
+#         return render(request, 'login.html',response_data)
 
 
 
@@ -85,9 +83,11 @@ def handle_uploaded_file(f):
 def hello(req) :
       return render(req, "a.html" ) 
 def rec(req) :
-      new_member = User( userid = req.POST.get('id'), username = req.POST.get('name'), password = req.POST.get('pw'), gender = req.POST.get('gender'),)
+      new_member = User( userid = req.POST.get('id'), username = req.POST.get('name'), password = req.POST.get('pw'), gender = req.POST.get('gender'), ping_num = req.POST.get('ping'), teachers = req.POST.get('teach'),)
+      print(new_member)
       new_member.save() 
-      return render(req, 'tttt.html', {'username':req.POST.get('name'), 'info2':req.POST.get('address')} )
+      return render(req, 'homeboot/homeboot.html')
+    #   {'username':req.POST.get('name'), 'info2':req.POST.get('address')} 
 def send(req) :
       return render(req, 'd.html', {'info1':req.POST.get('name'), 'info2':req.POST.get('address')} )
 def novel1(req,chapter, player1,player2) :
@@ -103,31 +103,31 @@ def join(req) :
 def search(req) :
       all_member = User.object.filter(username="김탁호", password="1234")
       return render(req, 'join.html', {'total_member : all_member'} )
-# def logged(req) :
-#       logged_member = User.objects.filter( userid = req.POST.get('user_id'))
-#       if logged_member :
-#             req.session['userid'] = req.POST.get('user_id')
-#             #req.session.get['userid'] 
-#             #세션 저장
-#             #req.session['password'] = req.POST.get('pwd')
-#             #세션 로드
-#             #req.session.get['password'] = req.POST.get('pwd')
-#             #세션삭제
-#             #req.session.pop['password'] = req.POST.get('pwd')
-#             #alert(req.session['userid'])
-#             print("로그인 성공")
-#             return render(req, 'success.html',{'total_member' : logged_member[0]} )
-#       elif req.session.get('userid') :
-#             print(req.session.get('userid'))
-#             logged_member = User.objects.filter( userid = req.session.get('userid'))
-#             # logged_member = User.objects.filter( userid = req.session.get('userid'))
-#             #return render(req,'logged.html',{'total_member' : req.session.get('userid')})
-#             #return render(req,'check.html')
-#             print("세션 로드 성공")
-#             return render(req,'success.html', {'total_member' : logged_member[0]})
-#       else: 
-#             print("로그인실패")
-#             return render(req, 'login.html')
+def logged(req) :
+      logged_member = User.objects.filter( userid = req.POST.get('user_id'))
+      if logged_member :
+            req.session['userid'] = req.POST.get('user_id')
+            #req.session.get['userid'] 
+            #세션 저장
+            #req.session['password'] = req.POST.get('pwd')
+            #세션 로드
+            #req.session.get['password'] = req.POST.get('pwd')
+            #세션삭제
+            #req.session.pop['password'] = req.POST.get('pwd')
+            #alert(req.session['userid'])
+            print("로그인 성공")
+            return render(req, 'success.html',{'total_member' : logged_member[0]} )
+      elif req.session.get('userid') :
+            print(req.session.get('userid'))
+            logged_member = User.objects.filter( userid = req.session.get('userid'))
+            # logged_member = User.objects.filter( userid = req.session.get('userid'))
+            #return render(req,'logged.html',{'total_member' : req.session.get('userid')})
+            #return render(req,'check.html')
+            print("세션 로드 성공")
+            return render(req,'success.html', {'total_member' : logged_member[0]})
+      else: 
+            print("로그인실패")
+            return render(req, 'login.html')
 def check(req) :
       if req.session.get('userid') :
             print(req.session.get('userid'))
@@ -138,8 +138,10 @@ def check(req) :
       else :
             return render(req, 'login.html')
 def logout(req) :
-      req.session.pop('userid')
-      return render(req, 'login.html')
+    req.session.pop('userid')
+    print(req.session.get('userid'))
+    print("로그아웃 성공")
+    return render(req, 'homeboot/homeboot.html')
 def change(req) :
       return render(req, 'change.html')
 def changed(req) :
@@ -148,8 +150,8 @@ def changed(req) :
             user = User.objects.get(userid = req.POST.get('user_id'))
             print("비밀번호 변경")
             print(logged_member)
-            user.password = req.POST.get('pw_changed')
-            user.save()  
+            User.password = req.POST.get('pw_changed')
+            User.save()  
             return render(req, 'success.html', {'total_member' : logged_member[0]})
       else :
             print("로그인실패")
@@ -215,25 +217,89 @@ def multiview(req) :
       return render(req, 'multiboxview.html', {'objects': req.POST.getlist('fruit')})
 
       # {'info1':req.POST.getlist('objects'), 'info2':req.POST.get('objects')}
+
 def ping(req) :
-    if req.session.get('userid') :
-        print(req.session.get('userid'))
-        print("세션 로드 재 성공")
-        login_session = req.session.get('userid', '')
-        context = {'session' : login_session }
+    users = User.objects.all()
+    response_data = {}
+    # if req.method == "POST":
+    if req.POST.get('user_id') :
+        # 처음 로그인 정보 입력시 로그인 확인 및 세션 저장 경로
+        login_username = req.POST.get('user_id')
+        login_password = req.POST.get('pwd')
+
+        if not (login_username and login_password):
+            response_data['error']="아이디와 비밀번호를 모두 입력해주세요."
+        else : 
+            myuser = User.objects.get(userid=login_username) 
+            print(myuser.password)
+            print(login_password)
+                #db에서 꺼내는 명령. Post로 받아온 username으로 , db의 username을 꺼내온다.
+            if login_password == myuser.password :
+                req.session['userid'] = myuser.userid 
+                print(req.session['userid'])
+                    #세션도 딕셔너리 변수 사용과 똑같이 사용하면 된다.
+                    #세션 user라는 key에 방금 로그인한 id를 저장한것.
+                login_session = req.session['userid']
+                context = {'session' : login_session, 'userss' : users }
+                # print(context)
+                # # Django 템플릿에 사용할 파라미터 값을 변수로 선언 > 사용해야할 인자값이 많아질 때 편리하다.
+                board = User.objects.get(userid=req.session['userid'])
+                # # Board는 필자가 Model에서 설정한 DB 이름
+                # print(board)
+                context['User'] = board
+                print("첫로그인성공입니다.")
+                # if myuser.teachers == "T" :
+                #     return render(req, 'ping.html',context)
+                return render(req, 'ping.html',context)
+            else:
+                response_data['error'] = "비밀번호를 틀렸습니다."
+                print("비밀번호 오류")
+                return render(req, 'login.html',response_data)
+    # else :
+    #     return render(request, 'ping.html')
+    elif req.session['userid'] :
+        # 세션만 있을 경우
+        print(req.session['userid'])
+        print("세션 재 로드 성공")
+        login_session = req.session['userid']
+        context = {'session' : login_session, 'userss' : users }
         print(context)
         # Django 템플릿에 사용할 파라미터 값을 변수로 선언 > 사용해야할 인자값이 많아질 때 편리하다.
-        board = User.objects.get(userid=req.session.get('userid',''))
+        board = User.objects.get(userid=req.session['userid'])
         # Board는 필자가 Model에서 설정한 DB 이름
         print(board)
-
         context['User'] = board
-        return render(req, 'ping.html', context)
+        
         # peoples= User.objects.filter()
         # return render(req, 'ping.html', {'total_member' : peoples[0]})
+        if req.POST.get('no1')  :
+            pinguser = User.objects.get(userid = req.session['userid'])
+            print(pinguser)
+            pinguser.ping_num = req.POST.get('no1')
+            print(pinguser.ping_num)
+            pinguser.save()    
+        elif req.POST.get('no2') :
+            pinguser = User.objects.get(userid = req.session['userid'])
+            pinguser.ping_num = req.POST.get('no2')
+            pinguser.save()  
+        elif req.POST.get('no3') :
+            pinguser = User.objects.get(userid = req.session['userid'])
+            pinguser.ping_num = req.POST.get('no3')
+            pinguser.save()  
+        elif req.POST.get('pingstart') :
+            print("핑 초기화")
+            userping = User.objects.all()
+            print(userping)
+            for userp in userping :
+                userp.ping_num = req.POST.get('pingstart')
+                userp.save() 
+        return render(req, 'ping.html', context)
     else:      
-        print("로그인실패")
-        return render(req, 'failure.html',)
+        # 로그인 입력없고 세션도 없을 경우
+        print("처음 페이지 접속")
+        return render(req, 'login.html',)
+
+
 def gprat(req) :
     return render(req, 'gprat.html')
 def buy(req) :
@@ -242,7 +308,17 @@ def buy(req) :
 def homeboot(req) :
       return render(req, 'homeboot/homeboot.html')
 def shop(req) :
-      return render(req, 'shop.html')
+    alotofwine= Wine.objects.all()
+    
+    context = {'wines' : alotofwine }
+    # Django 템플릿에 사용할 파라미터 값을 변수로 선언 > 사용해야할 인자값이 많아질 때 편리하다.
+
+    # board = get_object_or_404(Board, id=pk)
+    # Board는 필자가 Model에서 설정한 DB 이름
+
+    context['wine'] = alotofwine
+
+    return render(req, 'shop.html', context)
 # def wineup(req) :
 #       return render(req, 'wineup.html')
 

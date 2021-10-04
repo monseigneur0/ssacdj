@@ -8,44 +8,38 @@
         <title>Ping</title>
         <!-- <div class="container"> -->
             <!-- <div class="row"> -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light ">
                     <div class="container">
-                        <a class="navbar-brand" href="http://101.101.217.75:8000/happy/login2">Vino Un Poco</a>
+                        <a class="navbar-brand" href="http://101.101.217.75:8000/happy/ping">와인 모임</a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <ul class="navbar-nav me-auto mb-1 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="http://101.101.217.75:8000/happy/login2">Home</a>
+                                <a class="nav-link active" aria-current="page" href="http://101.101.217.75:8000/happy/ping">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link btn-danger" href="http://101.101.217.75:8000/happy/ping">ping</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled">Disabled</a>
-                            </li>
                             </ul>
+                            <!-- 네비바 로그인 회원가입용 버튼 -->
                             <!-- <form class="flex"> 
                             <input class="form-control me-2" type="text" id="id" placeholder="아이디" name="user_id" aria-label="Search">
                             <input class="form-control me-2" type="password" id="pw" placeholder="비밀번호" name="pwd">
                                 <button class="btn btn-outline-danger" type="button" id="logins" onclick="ajax();">로그인</button>
                                 <a class="btn btn-outline-danger" type="button" id="joins" href="http://101.101.217.75:8000/happy/join">회원가입</a>
                             </form> -->
-
+                            <div class="justify-content-end">{{ User.username }}님</div>
+                            <div class="item mt-3 ms-2">
+                                <form action="http://101.101.217.75:8000/happy/logout" d="psch1" method="post">
+                                    {% csrf_token %}
+                                    <button>로그아웃</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </nav>
+                <!-- offcanvas 로그인툴 -->
                 <!-- toggle end(right) off canvas plus login -->
-                <div class="d-flex flex-row-reverse bd-highlight">
+                <!-- <div class="d-flex flex-row-reverse bd-highlight">
                     <button class="btn btn-danger " type="button" id="loginss" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Login</button>
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
                         <div class="offcanvas-header">
@@ -65,155 +59,85 @@
                     </div>
                     <a class="btn btn-outline-danger" type="button" id="joinss" href="http://101.101.217.75:8000/happy/join">회원가입</a>
                     <div id="my_divs"></div>
-
-                </div>
+                </div> -->
     </head>
 
-
     <body>
-<!-- main body contents -->
         <div class="container">
-            <div class="row">
-                <div class="col-2 bg-danger">1</div>
-                <form class="col-2 bg-danger" action="#" name="no1" method="post">
-                    {% csrf_token %}
-                    <button>1번</button>
-                </form>
-                <form class="col-2 bg-danger" action="#" name="no2" method="post">
-                    {% csrf_token %}
-                    <button>2번</button>
-                </form>
-                <form class="col-2 bg-danger" action="#" name="no3" method="post">
-                    {% csrf_token %}
-                    <button>3번</button>
-                </form>
-                <div class="col-2 bg-danger">1</div>
-                <form class="col-2 bg-danger" action="#" name="nocheck" method="post">
-                    {% csrf_token %}
-                    <button>확인</button>
-                </form>            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-2 bg-danger"> 1   {{ total_member.username }}님</div>
-                <div class="col-2 bg-danger">1</div>
-                <div class="col-2 bg-danger">1</div>
-                <div class="col-2 bg-danger">1</div>
-                <div class="col-2 bg-danger">1</div>
-                <div class="col-2 bg-danger">1</div>
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <h4 class="mb-3">PING</h4>
+                            <form role="form" action="#" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="no1" value=1 >
+                                    {% csrf_token %}
+                                    <button class="btn btn-success btn-lg">1번</button>
+                                </div>
+                            </form>
+                            <form action="#"  method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="no2" value=2 >
+                                    {% csrf_token %}
+                                    <button class="btn btn-danger btn-lg" >2번</button>
+                                </div>
+                            </form>
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <input type="hidden" name="no3" value=3 >
+                                    {% csrf_token %}
+                                    <button class="btn btn-primary btn-lg" >3번</button>
+                                </div>
+                            </form>
+                            <form action="#" name="nocheck" method="post">
+                                <div class="form-group">
+                                    {% csrf_token %}
+                                    <button>진행 상황 확인</button>
+                                </div>
+                            </form>
+                            {% if User.teachers == "T" %}
+                                <form action="#" method="post">
+                                    <input type="hidden" name="pingstart" value=0>
+                                    {% csrf_token %}
+                                    <button class="btn-lg">핑 시작</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-10">
+                            <div class="d-flex flex-wrap text-white bg-light mt-5"> 
+                                {% for user in userss %}
+                                {% if user.ping_num == 0 and user.teachers == "S" %}
+                                    <button type="button" class="m-1 p-2 btn btn-secondary col-2">{{ user.username }} / {{ user.ping_num }}  </button>
+                                        
+                                {% endif %}
+                                {% endfor %}
+                                {% for user in userss %}
+                                {% if user.ping_num == 1 and user.teachers == "S" %}
+                                    <button type="button" class="m-1 p-2 btn btn-success col-2">{{ user.username }} / {{ user.ping_num }}  </button>
+                                        
+                                {% endif %}
+                                {% endfor %}
+                
+                                {% for user in userss %}
+                                {% if user.ping_num == 2 and user.teachers == "S" %}
+                                    <button type="button" class="m-1 p-2 btn btn-danger col-2">{{ user.username }} / {{ user.ping_num }}  </button>
+                                        
+                                {% endif %}
+                                {% endfor %}
+                
+                                {% for user in userss %}
+                                {% if user.ping_num == 3 and user.teachers == "S" %}
+                                    <button type="button" class="m-1 p-2 btn btn-primary col-2">{{ user.username }} / {{ user.ping_num }}  </button>
+                                        
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-{% load static %}
-{% block content %}
-
-<div>게시판 상세보기!</div>
-<div style="border: 1px black solid; margin: 20px 0px;"></div>
-
-<a href=""><button>수정</button></a>
-<a href=""><button>삭제</button></a>
-
-<div>
-    게시판 종류 : {{ board.username }}
-</div>
-<div>
-    작성자 : {{ board.ping_num }} 
-<div>
-
-</div>
-<div>
-
-</div>
-
-{% endblock %}
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-3"> 1/4 </div>
-            <div class="col-3"> 2/4 </div>
-            <div class="col-3"> 3/4 </div>
-            <div class="col-3"> 4/4 </div>
-        </div>
-    
-        <div class="row-6">
-            <div class="col-3"> 1/4 </div>
-            <div class="col-3"> 2/4 </div>
-            <div class="col-3"> 3/4 </div>
-            <div class="col-3"> 4/4 </div>
-        </div>     	
-    <div>
-</div>
-
-<!-- flex --> 
-<div class="d-flex p-3 bg-secondary text-white justify-content-end">
-    <div class="p-2 bg-info">flex item 1</div> 
-    <div class="p-2 bg-warning">flex item 2</div> 
-    <div class="p-2 bg-primary">flex item 3</div> 
-    <!-- content-end/center/start(안적었을때 기본) --> 
-</div> 
-<div class="flex-height d-flex p-3 bg-secondary text-white"> 
-<div class="p-2 bg-info align-self-start">flex item</div> 
-<div class="p-2 bg-warning">flex item</div> 
-<div class="p-2 bg-primary align-self-end">flex item</div> 
-</div> 
-<div class="container mt-3"> 
-<h2>Flex</h2> 
-<div class="d-flex p-3 bg-success text-white"> 
-    <div class="p-2">Home</div> <div class="p-2">Search</div> 
-    <div class="p-2 border ml-auto">Logout</div> 
-    <!-- 수직 제외하고는 같이 묶어서만 바뀌는 상위태그임--> 
-</div> </div> 
-<!-- wrap --> 
-<div class="container mt-3"> 
-    <h2>Wrap</h2> 
-    <p><code>.flex-wrap:</code></p> 
-    <!-- wrap : 아이템이 화면끝으로 올 때 줄바꿈 --> 
-    <div class="d-flex flex-wrap text-white bg-light"> 
-        <div class="p-2 border bg-success">Item 1</div> 
-        <div class="p-2 border bg-success">Item 2</div> 
-        <div class="p-2 border bg-success">Item 3</div> 
-        <div class="p-2 border bg-success">Item 4</div> 
-        <div class="p-2 border bg-success">Item 5</div> 
-        <div class="p-2 border bg-success">Item 6</div> 
-        <div class="p-2 border bg-success">Item 7</div> 
-        <div class="p-2 border bg-success">Item 8</div> 
-        <div class="p-2 border bg-success">Item 9</div> 
-    </div> <br> <p><code>.flex-wrap-reverse:</code></p> 
-    <!-- nowrap : 줄안바꿈 --> 
-    <div class="d-flex flex-nowrap text-white bg-light"> 
-        <div class="p-2 border bg-success">Item 1</div> 
-        <div class="p-2 border bg-success">Item 2</div> 
-        <div class="p-2 border bg-success">Item 3</div> 
-        <div class="p-2 border bg-success">Item 4</div> 
-        <div class="p-2 border bg-success">Item 5</div> 
-        <div class="p-2 border bg-success">Item 6</div> 
-        <div class="p-2 border bg-success">Item 7</div> 
-        <div class="p-2 border bg-success">Item 8</div> 
-        <div class="p-2 border bg-success">Item 9</div> 
-    </div> 
-</div> 
-
-<div class="p-5 bg-danger text-center">
-    <div class="bg-info">호이</div>
-    <span class="bg-primary text-warning">하이
-    <div class="bg-black d-block">호이2</div>
-    </span>
-
-</div>
-<div class="p-1 m-1 bg-danger text-center">
-    <div class="bg-info">호이</div>
-    <span class="bg-primary text-warning">하이
-          
-    </span>
-
-</div>
-
-
-</div>
-
-
-
 
 
     <script> 
@@ -226,10 +150,10 @@
                         $("#id").remove()
                         $("#pw").remove()
                         $("#logins").remove()
-                        $("#loginss").remove()
+                        // $("#loginss").remove()
 
                         $("#joins").remove()
-                        $("#joinss").remove()
+                        // $("#joinss").remove()
 
                         $("#my_div").html(hell);
                         $("#my_divs").html(hell);
@@ -238,6 +162,10 @@
                     }
                 );
             }
+            function reload(){
+                location.reload()
+            }
+            
     </script>
 <!-- <script>
     function alertsfail(){
@@ -252,7 +180,4 @@
         <input type="password" id="pw" placeholder="비밀번호" name="pwd">
         <button type="button" onclick="ajax();">로그인</button> -->
     </div>
-
-
-    {% load static %}
 </body>

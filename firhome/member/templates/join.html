@@ -21,7 +21,7 @@
             .input-form {
                 max-width: 680px;
 
-                margin-top: 80px;
+                margin-top: 30px;
                 padding: 32px;
 
                 background: #fff;
@@ -35,11 +35,11 @@
         </style>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="http://101.101.217.75:8000/happy/login2">Vino Un Poco</a>
+                <a class="navbar-brand" href="http://101.101.217.75:8000/happy/homeboot">Vino Un Poco</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://101.101.217.75:8000/happy/login2">Home</a>
+                        <a class="nav-link active" aria-current="page" href="http://101.101.217.75:8000/happy/homeboot">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ping</a>
@@ -66,8 +66,6 @@
                         <a class="btn btn-outline-danger" type="button" id="joins" href="http://101.101.217.75:8000/happy/join">회원가입</a>
                         <div id="my_div"></div>
                     </form> -->
-
-                    
                 </div>
             </div>
         </nav>
@@ -93,9 +91,8 @@
             <a class="btn btn-outline-danger" type="button" id="joins" href="http://101.101.217.75:8000/happy/join">회원가입</a>
         </div>  -->
     </head>
-
     <body>
-        <div class="container">  
+        <div class="container pt-0">  
             <div class="row">
                 <div class="input-form col-md-12 mx-auto">
                     <h4 class="mb-3">회원가입</h4>
@@ -139,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-4 mb-3">
                                     <label for="genderid">성별</label>
                                         <select class="form-select d-block w-100" id="genderid"  name="gender">
                                             <option value="M" selected>남자</option>
@@ -160,7 +157,17 @@
                                 <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
                                 <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
                             </div> -->
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-4 mb-3">
+                                    <label for="root">신분</label>
+                                    <select class="form-select d-block w-100" name="teach">
+                                        <option value="S">학생</option>
+                                        <option value="C">손님</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        가입 경로를 선택해주세요.
+                                    </div>
+                                </div>  
+                                <div class="col-md-4 mb-3">
                                     <label for="root">가입 경로</label>
                                     <select class="form-select d-block w-100" id="root">
                                         <option value="s">검색</option>
@@ -170,20 +177,12 @@
                                         가입 경로를 선택해주세요.
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-4 mb-3">
-                                    <label for="code">추천인 코드</label>
-                                    <input type="text" class="form-control" id="code" placeholder="" required>
-                                    <div class="invalid-feedback">
-                                        추천인 코드를 입력해주세요.
-                                    </div>
-                                </div> -->
-                            </div>
-                            <hr class="mb-4">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="aggrement" required>
-                                <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
-                            </div>
-                            <div class="mb-4"></div>
+                                <hr class="mb-4">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="aggrement" required>
+                                    <label class="custom-control-label mb-2" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+                                </div>
+                                <input class="mb-4" type="hidden" name="ping" value=0></div>
 
                             <!-- <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -194,10 +193,11 @@
                                 <label for="floatingPassword">Password</label>
                               </div>
                                -->
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+                                <button class="btn btn-primary" type="submit">가입 완료</button>
                         </form>
                         </div>
                     </div>
+                </div>
             <!-- <div class="row justify-content-md-center">
                 <div class="col-md-4">
                 </div>

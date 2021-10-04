@@ -25,7 +25,7 @@ class User(models.Model):
     roots = models.CharField(max_length=1, verbose_name='가입 경로', choices=ROOTSS)
 
     ping_num = models.IntegerField(verbose_name='핑 상태')
-    TEACHER = (('T','선생님(teacher)'), ('S', '학생(student)'))
+    TEACHER = (('T','선생님(teacher)'), ('S', '학생(student)'), ('C', '손님(customer'))
     teachers = models.CharField(max_length=1, verbose_name='선생님', choices=TEACHER)
 
 class Wine(models.Model):
