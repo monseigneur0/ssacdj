@@ -1,6 +1,7 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
+app_name = 'user'
 urlpatterns = [
       path("ok", views.hello ),
       path("send", views.send ),
@@ -26,7 +27,11 @@ urlpatterns = [
       path("ping", views.ping),
       path("homeboot", views.homeboot),
       path("gprat", views.gprat),
-      path("buy", views.buy),
+      path("buy", views.buy, name='buy'),
       path("shop", views.shop),
       path("wineup", views.wineup),
+      re_path(r'^buy/(?P<pk>[0-9]+)/$', views.buy, name='buy'),
+      path("buy/<int:pk>", views.buy, name='buy'), 
+      path("bought", views.bought),
+
       ]
