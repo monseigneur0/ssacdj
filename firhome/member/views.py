@@ -16,7 +16,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse #HttpResponse : 응답에 대한 메타정보를 포함한 객체입니다. 로그인 완료시에 "로그인 완료" 라는 text를 띄우기 위해 임포트했습니다.
 from django.contrib.auth.hashers import make_password, check_password #비밀번호 암호화 / 패스워드 체크(db에있는거와 일치성확인)
 from django.contrib import auth
-
+import torch
 # def join2(request):   #회원가입 페이지를 보여주기 위한 함수
 #     if request.method == "GET":
 #         return render(request, 'join.html')
@@ -416,3 +416,31 @@ def bought(req) :
     print(wine_order)
     wine_order.save() 
     return render(req, 'bought.html')
+
+
+def ai(req):
+      if req.method == 'POST':
+            x_train = torch.FloatTensor([[int(req.POST.get('day1'))],[int(req.POST.get('day2'))],[int(req.POST.get('day3'))]])
+            y_train = torch.FloatTensor([[int(req.POST.get('score1'))],[int(req.POST.get('score2'))],[int(req.POST.get('score3'))]])
+            W = torch.zeros(1)
+            b = torch.zeros(1)
+
+            lr = 0.0002
+
+            epochs = 10000
+
+            len_x = len(x_train)
+
+            for epoch in range(epochs):
+                  hypothesis = x_train * W + b
+                  cost = torch.mean((hypothesis -y_train)**2)
+
+                  gradient_w = torch.sum((W*x_train - y_train +b)*x_train)/ len_x
+                  gradient_b = torch.sum((W*x_train - y_train +b))/len_x
+
+            W -= lr * gradient_w
+            b -= lr * gradient_b
+
+            return render( req, 'ai_output.html', { 'W':W.item(), 'b':b.item() } )
+      else:
+            return render(req, 'ai_input.html')

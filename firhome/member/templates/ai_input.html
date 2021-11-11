@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    당신의 기존 학습 데이터를 입력하세요!
+    <form method="psot">
+        {% csrf_token %}
+        공부일수1 : <input type="text" name="day1">
+        성적1 : <input type="text" name="score1">
+        <br>
+
+        공부일수2 : <input type="text" name="day2">
+        성적2 : <input type="text" name="score2">
+        
+        <br>
+    
+        공부일수3 : <input type="text" name="day3">
+        성적3 : <input type="text" name="score3">
+
+        <button type="submit">학습 시작!</button>
+
+    </form>
+    W값 {{W}}, b값 {{b}}
+</body>
+</html>

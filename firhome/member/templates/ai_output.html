@@ -1,0 +1,20 @@
+인공지능 학습이 완료되었습니다!!
+
+<script>
+	var W = {{W}};
+	var b = {{b}};
+	
+	function predict(){
+		alert( W * document.getElementById("days").value + b + "점 맞으시겠네요!" );
+	}
+</script>
+
+<br>
+<br>
+<br>
+
+얼마나 공부하실 예정이신가요?
+
+<input id="days" type="text"> <button type="button" onclick="predict()">예측</button>
+
+

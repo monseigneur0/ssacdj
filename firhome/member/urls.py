@@ -33,5 +33,6 @@ urlpatterns = [
       re_path(r'^buy/(?P<pk>[0-9]+)/$', views.buy, name='buy'),
       path("buy/<int:pk>", views.buy, name='buy'), 
       path("bought", views.bought),
+      path("ai", views.ai),
 
       ]
