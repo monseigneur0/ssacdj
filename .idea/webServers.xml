@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3fd297e2-8f8e-4e0e-827c-0f2552776f3d" name="awstak">
+        <fileTransfer accessType="SFTP" host="54.180.147.246" port="22" sshConfigId="b557001b-6bc3-4aa8-9121-95318b2dacf1" sshConfig="ubuntu@54.180.147.246:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
