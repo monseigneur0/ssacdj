@@ -1,5 +1,4 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 # Create your models here.
 # ORM의 역할 : SQL을 직접 작성하지 않아도 데이터베이스로 접근해 CRUD(조회/추가/수정/삭제)가 가능하게 해준다.
 
